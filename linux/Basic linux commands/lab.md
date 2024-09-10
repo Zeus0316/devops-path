@@ -1,5 +1,6 @@
 # Basic Linux Commands
 1. What is the home directory for the user called bob?
+/home/bob/
 2. Which command will show you your home directory?
 3. In the command echo Welcome, what does the word Welcome represent with respect to the command?
 4. What type of command is git?
