@@ -1,7 +1,7 @@
 # Basic Linux Commands
 1. What is the home directory for the user called bob?
 /home/bob/
-2. Which command will show you your home directory?
+2. Which command will show you your home directory?echo $HOME
 3. In the command echo Welcome, what does the word Welcome represent with respect to the command?
 4. What type of command is git?
 5. Now, lets create some directories! Refer to the below diagram and create the directory called birds. Create the directory /home/bob first.
