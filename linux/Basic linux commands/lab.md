@@ -34,19 +34,19 @@ Use the -p option to create both directories in one go .   sudo mkdir -p /home/b
 5. What type of file is sample_script.sh located at /root?
 6. You are asked to install a new third-party IDE (integrated development environment ) in the system.  
 Which directory is the recommended choice for the installation?
-7. Which directory contains the files related to the block devices that can be seen when running the lsblk command?
+7. Which directory contains the files related to the block devices that can be seen when running the lsblk command? disk, partitions and LVM
 8. What is the name of the vendor for the Ethernet Controller used in this system?
 
 # Package Management: DPKG and APT
-1. Which of the following package managers would you use on a debian based distro?
-2. Download the package for firefox browser.  
+1. Which of the following package managers would you use on a debian based distro? apt
+2. Download the package for firefox browser. 
 Try to install it using sudo dpkg -i
 3. Was the installation successful ?
 4. Why did it fail?
-5. Let's use apt to install it firefox
+5. Let's use apt to install it firefox. sudo apt install firefox
 6. Lets now locate the package to install Chromium browser in the system.  
 Use apt search functionality to locate the correct package name.
 The browser has the description of: Chromium web browser, open-source version of Chrome  
 What is the correct package name?
-7. Finally, remove the firefox browser from the system.
+7. Finally, remove the firefox browser from the system. sudo apt autoremove firefox
 
