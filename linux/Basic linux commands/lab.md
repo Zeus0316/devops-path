@@ -50,3 +50,14 @@ The browser has the description of: Chromium web browser, open-source version of
 What is the correct package name?
 7. Finally, remove the firefox browser from the system. sudo apt autoremove firefox
 
+# Working with Shell
+1. Create a tarball of the directory called python and compress it using gzip. The compressed tar file should be available at /home/corine/python.tar.gz.  
+2. A file called caleston-code has been copied somewhere inside the /opt directory. But, Bob does not remember which directory he saved it in.  
+Can you find it?  
+3. Find the location of the file called dummy.service under /etc filesystem and redirect its absolute path to the file /home/corine/dummy-service.  
+You can use the redirect operator with the echo command to save the answer to the file. 
+4. Find the file under /etc directory that contains the string 172.16.238.197. Save the answer using the absolute path in the file /home/corine/ip  
+5. Create a new file called /home/corine/file_with_data.txt. This file should have one line of text that says a file in my home directory.  
+Make use of the redirect operator.  
+6. Run the command python3 /home/corine/my_python_test.py and redirect the standard error to the file /home/corine/py_error.txt.
+
