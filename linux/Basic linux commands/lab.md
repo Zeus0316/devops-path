@@ -72,3 +72,8 @@ Check the nsswitch.conf file
 7. Which search domain is configured in this system ? 
 Inspect the DNS configuration file.
 
+# Network basics
+1. What is the IP Address assigned to Bob's Laptop?  
+2. What is the name of the interface that has this IP (from the previous question) address assigned?  
+3. What is the default gateway configured in the system?  
+
