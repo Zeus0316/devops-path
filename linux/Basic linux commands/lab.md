@@ -61,3 +61,14 @@ You can use the redirect operator with the echo command to save the answer to th
 Make use of the redirect operator.  
 6. Run the command python3 /home/corine/my_python_test.py and redirect the standard error to the file /home/corine/py_error.txt.
 
+# DNS
+1. What is the IP address of the DNS Server used in this system?
+2. Which file is responsible for host file-based DNS resolution?
+3. What is the configuration file used for the DNS Server?
+4. Change the DNS Server to google's DNS which is 8.8.8.8
+5. Which order is used currently to resolve an IP address in the system?  
+Check the nsswitch.conf file
+6. Change the order to DNS first and then hosts.
+7. Which search domain is configured in this system ? 
+Inspect the DNS configuration file.
+
