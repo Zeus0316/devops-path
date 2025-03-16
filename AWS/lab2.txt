@@ -1,0 +1,64 @@
+Lab 2: Creating a VPC and Launching a Web Application in an Amazon EC2 Instance
+
+Objectives
+After completing this lab, you will be able to:
+
+Create a new Amazon VPC with two public subnets
+Create an Internet Gateway
+Create a Route Table with a Public Route to the Internet
+Create a Security Group
+Launch an Amazon Elastic Compute Cloud (Amazon EC2) instance
+Configure an EC2 instance to host a web application using a user data script
+
+Scenario
+In this scenario, you create the underlying network architecture needed to run a web application on an Amazon EC2 instance. 
+After building the network, you launch the EC2 Instance used to host your web application and conduct a simple test to verify you can access it in a web browser.
+
+
+Task 1: Create a Virtual Private Cloud
+In this task, you create a VPC, an Internet gateway, a Route Table with a public route to the Internet, 
+and two public subnets in a two separate Availability Zones (AZs).
+VPC IPv4 CIDR block 10.0.0.0/16
+Subnet 1 IPv4 CIDR block 10.0.0.0/24
+Subnet 2 IPv4 CIDR block 10.0.1.0/24
+
+Task 2: Create a VPC Security Group
+In this task, you create a VPC security group. A security group controls the traffic that is allowed to reach and leave 
+the resources that it is associated with. For example, after you associate a security group with an EC2 instance, it controls 
+the inbound and outbound traffic for the instance, similar to a firewall.
+
+Task 3: Launch Your Amazon EC2 Instance
+In this task, you create an EC2 instance and provide a bootstrap script to install and configure the requirements for your web application. You also enable SSH (Secure Shell) access to the instance.
+Copy the following script and paste it into the User data text box:
+#!/bin/bash -ex
+
+# Update yum
+yum -y update
+
+# installs nvm (Node Version Manager)
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.0/install.sh | bash
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# download and install Node.js (you may need to restart the terminal)
+nvm install 20
+
+# Create a dedicated directory for the application
+mkdir -p /var/app
+
+# Get the app from S3
+wget https://aws-tc-largeobjects.s3-us-west-2.amazonaws.com/ILT-TF-100-TECESS-5/app/app.zip
+
+# Extract it to the desired folder
+unzip app.zip -d /var/app/
+cd /var/app/
+
+# Install dependencies
+npm install
+
+# Start the app
+npm start
+
+Open a new browser tab and paste the IP address you copied in the previous step. You should see the following application screen.
