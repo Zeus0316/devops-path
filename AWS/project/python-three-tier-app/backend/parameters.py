@@ -1,7 +1,7 @@
-import boto3
+
 import requests
 
-client = boto3.client('ssm')
+
 
 master_username = "admin"
 
