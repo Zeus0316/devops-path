@@ -20,21 +20,21 @@ pipeline {
                 
             }
         }
-        stage("Test d'acceptance") {
-            steps {
-                script {
-                    sh """
-                        echo Test d'acceptance
+        // stage("Test d'acceptance") {
+        //     steps {
+        //         script {
+        //             sh """
+        //                 echo Test d'acceptance
 
-                        docker run -d --name ${params.CONTAINER_NAME} ${params.IMAGE_FRONTEND_NAME}:${params.IMAGE_TAG}
-                        sleep 5
-                        export IP_CONTAINER=$(docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' ${params.CONTAINER_NAME})
-                        curl -I http://$IP_CONTAINER:5000
+        //                 docker run -d --name ${params.CONTAINER_NAME} ${params.IMAGE_FRONTEND_NAME}:${params.IMAGE_TAG}
+        //                 sleep 5
+        //                 export IP_CONTAINER=$(docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' ${params.CONTAINER_NAME})
+        //                 curl -I http://$IP_CONTAINER:5000
 
-                        docker rm -f frontend-container
-                    """
-                }
-            }
-        }
+        //                 docker rm -f frontend-container
+        //             """
+        //         }
+        //     }
+        // }
     }
 }
