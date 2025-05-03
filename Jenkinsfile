@@ -13,7 +13,7 @@ pipeline {
                 script {
                     sh """
                     echo Build Docker Image
-                    docker build -t ${params.IMAGE_FRONTEND_NAME}:${params.IMAGE_TAG} devops-path/AWS/project/python-three-tier-app/frontend/
+                    docker build -t ${params.IMAGE_FRONTEND_NAME}:${params.IMAGE_TAG} AWS/project/python-three-tier-app/frontend/
                     docker images            
                     """
                 }
