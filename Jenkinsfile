@@ -3,18 +3,21 @@ pipeline {
     parameters {
         string(name: 'IMAGE_FRONTEND_NAME', defaultValue: 'frontend-image', description: 'The name of my frontend image')
         string(name: 'IMAGE_TAG', defaultValue: 'latest', description: 'The tag of my frontend image')
-        string(name: 'CONTAINER_NAME', defaultValue: 'fontend-container', description: 'The nameof my frontend container')
+        string(name: 'CONTAINER_NAME', defaultValue: 'fontend-container', description: 'The name of my frontend container')
         
     }
     
     stages {
         stage('Build Docker Image') {
             steps {
-                sh """"
+                script {
+                    sh """
                     echo Build Docker Image
                     docker build -t ${params.IMAGE_FRONTEND_NAME}:${params.IMAGE_TAG} devops-path/AWS/project/python-three-tier-app/frontend/
                     docker images            
-                """
+                    """
+                }
+                
             }
         }
         // stage("Test d'acceptance") {
