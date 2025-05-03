@@ -6,11 +6,12 @@ pipeline {
         string(name: 'CONTAINER_NAME', defaultValue: 'fontend-container', description: 'The nameof my frontend container')
         
     }
+    
     stages {
         stage('Build Docker Image') {
             steps {
                 echo 'Build Docker Image'
-                docker build -t ${IMAGE_FRONTEND_NAME}:${IMAGE_TAG} devops-path/AWS/project/python-three-tier-app/frontend/
+                docker build -t ${params.IMAGE_FRONTEND_NAME}:${params.IMAGE_TAG} devops-path/AWS/project/python-three-tier-app/frontend/
                 deocker images
             }
         }
