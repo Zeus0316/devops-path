@@ -12,28 +12,29 @@ pipeline {
             steps {
                 script {
                     sh """
-                    echo Build Docker Image
-                    docker build -t ${params.IMAGE_FRONTEND_NAME}:${params.IMAGE_TAG} AWS/project/python-three-tier-app/frontend/
-                    docker images            
+                        echo Build Docker Image
+                        docker build -t ${params.IMAGE_FRONTEND_NAME}:${params.IMAGE_TAG} AWS/project/python-three-tier-app/frontend/
+                        docker images            
                     """
                 }
                 
             }
         }
-        // stage("Test d'acceptance") {
-        //     steps {
-        //         echo "Test d'acceptance"
+        stage("Test d'acceptance") {
+            steps {
+                script {
+                    sh """
+                        echo Test d'acceptance
 
-        //         docker run -d --name frontend-container ${IMAGE_FRONTEND_NAME}:${IMAGE_TAG}
-        //         sleep 5
-        //         export IP_CONTAINER=$(docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' ${CONTAINER_NAME})
-        //         curl -I http://$IP_CONTAINER:5000
+                        docker run -d --name frontend-container ${params.IMAGE_FRONTEND_NAME}:${params.IMAGE_TAG}
+                        sleep 5
+                        export IP_CONTAINER=$(docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' ${params.CONTAINER_NAME})
+                        curl -I http://$IP_CONTAINER:5000
 
-        //         docker rm -f frontend-container
-        //         docker tag ${IMAGE_FRONTEND_NAME}:${IMAGE_TAG} franklinfoko/${IMAGE_FRONTEND_NAME}:${IMAGE_TAG}
-
-        //         docker images
-        //     }
-        // }
+                        docker rm -f frontend-container
+                    """
+                }
+            }
+        }
     }
 }
