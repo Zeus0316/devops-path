@@ -43,7 +43,7 @@ pipeline {
                 script {
                     sh """
                         echo Push Docker Image
-                        echo $DOCKERHUB_CREDENTIAL | docker login -u $(echo $DOCKERHUB_CREDENTIAL | cut -d':' -f1) --password-stdin
+                        echo $DOCKERHUB_CREDENTIAL | docker login -u \$(echo $DOCKERHUB_CREDENTIAL | cut -d':' -f1) --password-stdin
                         docker tag ${params.IMAGE_FRONTEND_NAME}:${params.IMAGE_TAG} ${params.DOCKERHUB_USER}/${params.IMAGE_FRONTEND_NAME}:${params.IMAGE_TAG}
                         docker push ${params.DOCKERHUB_USER}/${params.IMAGE_FRONTEND_NAME}:${params.IMAGE_TAG}
                         docker logout
