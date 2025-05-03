@@ -48,6 +48,7 @@ pipeline {
                         docker push ${params.DOCKERHUB_USER}/${params.IMAGE_FRONTEND_NAME}:${params.IMAGE_TAG}
                         docker logout
                     """
+                    }   
                 }
             }
         }
