@@ -23,7 +23,7 @@ pipeline {
         stage("Test d'acceptance") {
             steps {
                 script {
-                    sh """
+                    sh '''
                         echo Test acceptance
 
                         docker run -d --name ${params.CONTAINER_NAME} ${params.IMAGE_FRONTEND_NAME}:${params.IMAGE_TAG}
@@ -32,7 +32,7 @@ pipeline {
                         curl -I http://$IP_CONTAINER:5000
 
                         docker rm -f frontend-container
-                    """
+                    '''
                 }
             }
         }
