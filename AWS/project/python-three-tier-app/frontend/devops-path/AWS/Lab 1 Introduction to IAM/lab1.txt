@@ -1,0 +1,56 @@
+Lab 1: Introduction to IAM
+##########################
+
+Objectives
+After completing this lab, you will be able to:
+
+- Explore IAM Users and Groups
+- Inspect IAM policies applied to groups
+- Follow a real-world scenario that adds users to groups and explores group permissions
+- Locate and use the IAM sign-in URL
+- Experiment with policies and service access
+
+
+Task 1: Create IAM users, groups, and policies
+----------------------------------------------
+
+In this task, you create IAM users and groups
+
+Create 3 users:
+- user1
+- user2
+- user3
+
+Three groups with the following policies:
+- S3 Support: read-only access to Amazon Simple Storage Service (Amazon S3)
+- EC2 Support: read-only access to Amazon Elastic Compute Cloud (Amazon EC2)
+- EC Admin: ability to view, start, and stop EC2 instances
+
+Task 2: Manage users and groups
+-------------------------------
+
+In this task, you work with the users and groups, enabling permissions to support a business scenario.
+
+Business scenario
+Your company’s use of Amazon Web Services grows over time. The company uses many Amazon EC2 instances and 
+a significant amount of Amazon S3 storage. You want to grant access to new staff members based on their job functions, as shown in the table.
+
+User	Group	    Permissions
+user-1	S3-Support	Read-Only access to Amazon S3
+user-2	EC2-Support	Read-Only access to Amazon EC2
+user-3	EC2-Admin	View, Start, and Stop Amazon EC2 instances
+
+Add user-1 to the S3-Support group
+You recently hired user-1 into a role to provide support for Amazon S3. 
+You want to add them to the S3-Support group to inherit the necessary permissions in the attached AmazonS3ReadOnlyAccess policy.
+
+Add user-2 to the EC2-Support group
+You hired user-2 for a role to provide support for Amazon EC2.
+
+Add user-3 to the EC2-Admin group
+You hired user-3 as your Amazon EC2 administrator.
+
+Review user and group assignments
+Each Group should have a 1 in the Users column to denote the number of users in each group.
+
+If you do not have a 1 beside each group, revisit the preceding instructions to ensure that each user belongs to a group, as shown in the table in the Business Scenario section.

@@ -1,0 +1,124 @@
+####################################
+Lab 1: Création du premier container
+####################################
+
+- Après avoir correctement installé Docker, il est temps pour nous de lancer notre premier container
+- A l’aide des commandes vues jusqu’ici, lancez votre premier container docker, l’image à utiliser devra être « nginx »
+- Vérifier si votre container est bien fonctionnel à l’aide de la commande « docker ps »
+- Réalisez l’ensemble des manipulations additionnelles demandées par votre formateur
+- Stoppez votre container
+- Supprimez votre container et se rassurer qu’il a bien été supprimé.
+
+
+##############################
+Lab 2: Manipulation des images
+##############################
+
+- Combien d’images docker existent-ils dans votre machine à ce stade ?
+- Relancer à nouveau un container docker à l’aide de l’image nginx
+- Combien de temps cela prend ? Est-ce le même temps que précédemment?
+- Supprimer l’image nginx de votre machine
+- Avez-vous pu supprimer ladite images? Pourquoi?
+- Supprimer le container nginx
+- Supprimer à nouveau l’image nginx de votre machine
+
+
+#####################################################
+Lab 3: Ajout d’une commande au lancement du container
+#####################################################
+
+- Lancer le conatiner ubuntu 
+- Vérifier que ce container soit bien lancé et qu’il fonctionne correctement 
+- Pourquoi le container s’est-il arreté
+- Supprimer le container ubuntu 
+- Lancer à nouveau le container ubuntu en mode attach et en passant en paramètre la commande « sleep 100 » Que constatez vous?
+- Lancez à nouveau le container ubuntu en mode attach passant la commande « ls » Que constatez vous?
+- Lancez le container ubuntu en mode détaché avec la commande « sleep 4500 » Observez et expliquez le comportement de ces différentes commandes
+- Supprimez l’ensemble des containers présents (fonctionnels ou arrêtés) sur votre machine
+- Supprimez également les images existantes
+
+
+####################################
+Lab 4: interaction avec un container
+####################################
+
+- Lancer le container Ubuntu en mode détaché et interactive avec un tag différent de latest
+- Que constatez vous?
+- Créez une nouvelle machine dans l’environnement de labs
+- Dans cette machine, lancez à nouveau le container ubuntu en mode interactive + nouveau terminal
+- Que constatez vous?
+- Supprimez les différents containers présent dans votre machine
+- Lancez le container Ubuntu en mode détaché avec la commande « sleep 4500 »
+- Utiliser la commande « docker exec » afin d’exécuter une commande à l’intérieur du container (commande de création d’un dossier portant votre prénom »
+- Utiliser docker exec afin d’afficher l’ensemble des fichier et répertoire à l’aide de la commande « ls »
+- Utiliser docker exec et passez la commande « /bin/bash »
+- Que constatez vous?
+- Utiliser docker exec en mode interactive + nouveau terminal et passez la commande « /bin/bash »
+- Que constatez vous?
+- Observez et expliquez le comportement de ces différentes commandes puis supprimez vos environnements
+
+
+###################
+Lab 5: Port mapping
+###################
+
+- Lancer le container nginx en mode détaché et en exposant le port 80 du container sur le port 8080 de l’hote
+- Vérifier le bon fonctionnement de votre container
+- Vérifier qu’il est bien joignable à travers le port 8080 de votre hote.
+- Que constatez vous? Quel est le contenu de la page web afficheé?
+- A l’aide de docker exec, connectez vous à ce container afin de créer un fichier « index.html » dans lequel vous feriez une briève présentation de vous
+- Déplacer ce fichier index.html précédemment créé vers le répertoire « /usr/share/nginx/html» de votre container
+- Arrêtez votre container et redémarrez le à nouveau
+- Essayez à nouveau d’y accéder à travers le port 8080 de votre hote… Que constatez vous?
+
+
+##############################################
+Lab 6: opérations et inspection d’un container
+##############################################
+
+- Créez un fichier « index.html » en local sur votre machine contenant les mêmes informations que celui du TP 5
+- Lancez le container nginx en l’exposant sur le port 8080 et en ajoutant l’option (-v fichier_index.html:/usr/share/nginx/html//index.html)
+- Vérifier que le container soit bien lancé
+- Vérifiez que l’application de notre container nginx est bien consommable à partir du port 8080 de notre hote
+- Que constatez vous? Quel est le contenu de la page web afficheé?
+- Supprimer les containers, images et votre environnement.
+
+
+#############################################
+Lab 7: Manipulation variables d’environnement
+#############################################
+
+- Lancez un container à partir de l’image kodekloud/webapp-color en exposant son port 8080 sur le port 5000 de votre hote
+- Connectez vous sur le port 5000 de votre hote afin de consommer l’application
+- Lancez à nouveau un autre container à base de la même image mais cette fois ci en définissant la variable d’environnement APP_COLOR=red. (exposez sur le port 8000 )
+- Consommez l’application. Que constatez vous?
+- Supprimer votre environnement
+
+
+################################
+Lab 8: Créez un compte dockerhub
+################################
+
+
+#################################
+Lab 9: Créez votre première image
+#################################
+
+- Il s’agit ici de créer une image docker afin de conteneuriser une application web statique,
+- Télécharger les fichiers de l’application à l’aide de git clone « https://github.com/sadofrazer/static-website-example.git »
+- conteneuriser cette application à l’aide de l’image de base nginx.
+
+
+################################
+Lab 10: Création d’images docker
+################################
+
+- Il s’agit ici de créer une image docker afin de conteneuriser une application web statique,
+- conteneuriser cette application sans télécharger les fichiers au préalable en local à l’aide de l’image de base ubuntu.
+- Fichiers de l’application se trouvant dans le repo : https://github.com/daviddias/static-webpage-example.git
+
+
+
+
+
+
