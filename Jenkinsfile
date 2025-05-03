@@ -39,17 +39,16 @@ pipeline {
         }
         stage("Push Docker Image") {
             steps {
-                withCredentials([usernameColonPassword(credentialsId: 'dockerhub-cred', variable: 'DOCKERHUB_CREDENTIAL')]) {
-                script {
+                withCredentials([usernamePassword(credentialsId: 'dockerhub-cred', passwordVariable: 'DOCKERHUB_PASSWORD', usernameVariable: 'DOCKERHUB_USERNAME')]) {
+                    script {
                     sh """
                         echo Push Docker Image
-                        echo $DOCKERHUB_CREDENTIAL | docker login -u \$(echo $DOCKERHUB_CREDENTIAL | cut -d':' -f1) --password-stdin
+                        echo $DOCKERHUB_PASSWORD | docker login -u $DOCKERHUB_USERNAME --password-stdin
                         docker tag ${params.IMAGE_FRONTEND_NAME}:${params.IMAGE_TAG} ${params.DOCKERHUB_USER}/${params.IMAGE_FRONTEND_NAME}:${params.IMAGE_TAG}
                         docker push ${params.DOCKERHUB_USER}/${params.IMAGE_FRONTEND_NAME}:${params.IMAGE_TAG}
                         docker logout
                     """
                 }
-}
             }
         }
     }
