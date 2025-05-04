@@ -5,7 +5,7 @@ pipeline {
         string(name: 'IMAGE_TAG', defaultValue: 'latest', description: 'The tag of my frontend image')
         string(name: 'CONTAINER_NAME', defaultValue: 'fontend-container', description: 'The name of my frontend container')
         string(name: 'DOCKERHUB_USER', defaultValue: 'franklinfoko', description: 'The username of docker hub')
-        string(name: 'ACCOUNT_ID', defaultValue: '891377281461' description: 'The ID of AWS account')
+        string(name: 'ACCOUNT_ID', defaultValue: '891377281461', description: 'The ID of AWS account')
         string(name: 'AWS_REGION', defaultValue: 'ca-central-1', description: 'Mys AWS Region')
         
     }
