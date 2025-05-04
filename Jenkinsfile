@@ -5,6 +5,8 @@ pipeline {
         string(name: 'IMAGE_TAG', defaultValue: 'latest', description: 'The tag of my frontend image')
         string(name: 'CONTAINER_NAME', defaultValue: 'fontend-container', description: 'The name of my frontend container')
         string(name: 'DOCKERHUB_USER', defaultValue: 'franklinfoko', description: 'The username of docker hub')
+        string(name: 'ACCOUNT_ID', defaultValue: '891377281461' description: 'The ID of AWS account')
+        string(name: 'AWS_REGION', defaultValue: 'ca-central-1', description: 'Mys AWS Region')
         
     }
     
@@ -37,7 +39,7 @@ pipeline {
                 }
             }
         }
-        stage("Push Docker Image") {
+        stage("Push Docker Image on DockerHub") {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'dockerhub-cred', passwordVariable: 'DOCKERHUB_PASSWORD', usernameVariable: 'DOCKERHUB_USERNAME')]) {
                     script {
@@ -52,5 +54,19 @@ pipeline {
                 }
             }
         }
+        stage("Push Docker Image on ECR") {
+            steps {
+                withCredentials([aws(accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'aws-credentials', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
+                    script {
+                        sh """
+                            aws ecr get-login-password --region ${params.AWS_REGION} | docker login --username AWS --password-stdin ${params.ACCOUNT_ID}.dkr.ecr.${params.AWS_REGION}.amazonaws.com
+                            docker tag ${params.IMAGE_FRONTEND_NAME}:${params.IMAGE_TAG} ${params.ACCOUNT_ID}.dkr.ecr.${params.AWS_REGION}.amazonaws.com/my-ecr-repo:latest
+                            docker push ${params.ACCOUNT_ID}.dkr.ecr.${params.AWS_REGION}.amazonaws.com/my-ecr-repo:latest
+                        """
+                    }
+                }
+            }
+        }
+
     }
 }
